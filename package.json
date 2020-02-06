@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
+    "@angular/animations": "^6.1.10",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -20,8 +20,15 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@types/mathjs": "^6.0.4",
+    "bootstrap": "4.2.1",
     "core-js": "^2.5.4",
+    "mathjs": "^6.6.0",
+    "ng-pick-datetime": "^5.2.6",
+    "ngx-bootstrap": "^3.3.0",
     "rxjs": "~6.2.0",
+    "rxjs-compat": "^6.5.4",
+    "sweetalert2": "^8.11.6",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

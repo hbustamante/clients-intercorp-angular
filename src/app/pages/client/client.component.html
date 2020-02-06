@@ -1,0 +1,75 @@
+<h1>Edición del Cliente</h1>
+<hr>
+
+
+<div class="row text-right">
+  <div class="col">
+    <button class="btn btn-danger" routerLink="/clientes">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+
+    <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input type="text" class="form-control" placeholder="Firebase ID" [(ngModel)]="client.Id" name="id"
+          disabled="disabled">
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre del cliente" [(ngModel)]="client.Nombre"
+          name="nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label>Apellido</label>
+        <input type="text" class="form-control" [(ngModel)]="client.Apellido" name="apellido"
+          placeholder="Apellido del cliente">
+      </div>
+
+      <div class="form-group">
+        <label>Fecha de Nacimiento</label>
+        <div>
+          <input type="text" 
+            bsDatepicker 
+            [bsConfig]="{dateInputFormat: 'dd/MM/yyyy'}" 
+            class="form-control"
+            [(ngModel)]="client.FechaNacimiento" 
+            name="fechaNacimiento"
+            value="{{ client.FechaNacimiento | date: 'dd/MM/yyyy' }}"
+            placeholder="Fecha de Nacimiento del cliente" 
+            (ngModelChange)="calcularEdad($event)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Edad</label>
+        <input type="text" readonly='true' class="form-control" [(ngModel)]="client.Edad" name="edad"
+          placeholder="Edad del cliente">
+      </div>
+
+      <hr>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
