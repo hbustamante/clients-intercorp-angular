@@ -25,7 +25,6 @@
         <small class="form-text text-muted">Este campo es autogenerado</small>
       </div>
 
-
       <div class="form-group">
         <label>Nombre</label>
         <input type="text" class="form-control" placeholder="Nombre del cliente" [(ngModel)]="client.Nombre"
@@ -41,14 +40,9 @@
       <div class="form-group">
         <label>Fecha de Nacimiento</label>
         <div>
-          <input type="text" 
-            bsDatepicker 
-            [bsConfig]="{dateInputFormat: 'dd/MM/yyyy'}" 
-            class="form-control"
-            [(ngModel)]="client.FechaNacimiento" 
-            name="fechaNacimiento"
-            value="{{ client.FechaNacimiento | date: 'dd/MM/yyyy' }}"
-            placeholder="Fecha de Nacimiento del cliente" 
+          <input type="text" bsDatepicker class="form-control"
+            [(ngModel)]="client.FechaNacimiento" name="fechaNacimiento"
+            value="{{ client.FechaNacimiento | date: 'dd/MM/yyyy' }}" placeholder="Fecha de Nacimiento del cliente"
             (ngModelChange)="calcularEdad($event)">
         </div>
       </div>

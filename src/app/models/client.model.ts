@@ -4,7 +4,7 @@ export class ClientModel {
     Nombre: string;
     Apellido: string;
     Edad: number;
-    FechaNacimiento: string;
+    FechaNacimiento: any;
 
     constructor() {
     }

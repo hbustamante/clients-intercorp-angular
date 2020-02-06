@@ -38,12 +38,21 @@ export class ClientComponent implements OnInit {
         .subscribe((resp: ClientModel) => {
           this.client.Id = id;
           this.client.Nombre = resp.Nombre;
-          this.client.Nombre = resp.Apellido;
-          this.client.FechaNacimiento = this.datePipe.transform(resp.FechaNacimiento, 'dd/MM/yyyy');//formatDate(resp.FechaNacimiento, 'dd/MM/yyyy','es');
+          this.client.Apellido = resp.Apellido;
+          this.client.FechaNacimiento = this.ValidateDate(resp.FechaNacimiento);//formatDate(resp.FechaNacimiento, 'dd/MM/yyyy','es');
           this.client.Edad= resp.Edad;
         });
 
     }
+  }
+  ValidateDate(FechaNacimiento: any): any {
+    if ((typeof FechaNacimiento === "string") && (FechaNacimiento.includes('/'))){
+      var dateArray = FechaNacimiento.split("/");
+      FechaNacimiento = new Date(dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0])
+    }else{
+      FechaNacimiento = this.datePipe.transform(FechaNacimiento, 'dd/MM/yyyy');
+    }
+    return FechaNacimiento;
   }
 
 

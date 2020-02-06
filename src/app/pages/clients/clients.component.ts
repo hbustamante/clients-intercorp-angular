@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientsService} from '../../services/clients.service';
 import { ClientModel } from  '../../models/client.model';
 import Swal from 'sweetalert2';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-clients',
@@ -15,7 +16,8 @@ export class ClientsComponent implements OnInit {
   cargando = false;
 
   constructor(
-    private clientsService:ClientsService
+    private clientsService:ClientsService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -23,17 +25,27 @@ export class ClientsComponent implements OnInit {
     this.cargando = true;
     this.clientsService.getClients()
       .subscribe( resp => {
+        this.validateResponse(resp);
         this.clients = resp;
         this.cargando = false;
       });
 
+  }
+  validateResponse(resp: ClientModel[]) {
+    resp.forEach( f =>{
+      if ((typeof f.FechaNacimiento === "string") && (f.FechaNacimiento.includes('/'))) {
+        var dateArray = f.FechaNacimiento.split("/");
+        f.FechaNacimiento = new Date(dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0])
+      }
+    })
+    
   }
 
   calcularPosibleMuerte(client:ClientModel) : Date{
     if (client ){
       var diferenciaEdad = this.esperanzaVida - client.Edad;
       var fechNac  =new Date(client.FechaNacimiento);
-      var year = fechNac.getFullYear();
+      var year = new Date().getFullYear();
       var month: number = fechNac.getMonth();
       var day: number = fechNac.getDate();
       var c = new Date(year + diferenciaEdad, this.getRandomArbitrary(0,12)+ month, this.getRandomArbitrary(0,30)+day);
