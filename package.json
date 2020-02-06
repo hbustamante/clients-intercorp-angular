@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@types/mathjs": "^6.0.4",
-    "bootstrap": "4.2.1",
+    "bootstrap": "4.3.1",
     "core-js": "^2.5.4",
     "mathjs": "^6.6.0",
     "ng-pick-datetime": "^5.2.6",
