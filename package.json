@@ -23,7 +23,7 @@
     "@types/mathjs": "^6.0.4",
     "bootstrap": "4.2.1",
     "core-js": "^2.5.4",
-    "mathjs": "^6.6.0",
+    "mathjs": "^7.5.1",
     "ng-pick-datetime": "^5.2.6",
     "ngx-bootstrap": "^3.3.0",
     "rxjs": "~6.2.0",
